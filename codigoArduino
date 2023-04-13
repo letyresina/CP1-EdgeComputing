@@ -1,0 +1,45 @@
+int LedVERDE=7;
+int LedAMARELO=8;
+int LedVERMELHO=9;
+float SensorLDR=A0;
+int valorSensorLDR=0;
+int buzzer=4;
+
+void setup()
+{
+  Serial.begin(9600);
+
+  pinMode(LedVERDE,OUTPUT);
+  pinMode(LedVERMELHO,OUTPUT);
+  pinMode(LedAMARELO,OUTPUT);
+  pinMode(SensorLDR,INPUT);
+  pinMode(buzzer,OUTPUT);
+}
+
+void loop(){
+  int valorSensorLDR=analogRead(SensorLDR);
+
+  if(valorSensorLDR<200)
+  {
+    apagaLeds();
+    digitalWrite(LedVERDE,HIGH);
+  }
+  if(valorSensorLDR>=200&&valorSensorLDR<=250){
+    apagaLeds();
+    digitalWrite(LedAMARELO,HIGH);
+  }
+  if(valorSensorLDR>250){
+    apagaLeds();
+    digitalWrite(LedVERMELHO,HIGH);
+    tone(buzzer,2000,200);
+    delay(100);
+  }
+}
+
+void apagaLeds(){
+  digitalWrite(LedVERMELHO,LOW);
+  digitalWrite(LedAMARELO,LOW);
+  digitalWrite(LedVERDE,LOW);
+}
+    
+    
