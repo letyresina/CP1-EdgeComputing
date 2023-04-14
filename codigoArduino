@@ -18,13 +18,13 @@ void setup()
 
 void loop(){
   int valorSensorLDR=analogRead(SensorLDR);
-
-  if(valorSensorLDR<200)
+  Serial.println(valorSensorLDR);
+  if(valorSensorLDR<100)
   {
     apagaLeds();
     digitalWrite(LedVERDE,HIGH);
   }
-  if(valorSensorLDR>=200&&valorSensorLDR<=250){
+  if(valorSensorLDR>=100&&valorSensorLDR<=250){
     apagaLeds();
     digitalWrite(LedAMARELO,HIGH);
   }
@@ -32,7 +32,7 @@ void loop(){
     apagaLeds();
     digitalWrite(LedVERMELHO,HIGH);
     tone(buzzer,2000,200);
-    delay(100);
+    delay(1000);
   }
 }
 
@@ -41,5 +41,3 @@ void apagaLeds(){
   digitalWrite(LedAMARELO,LOW);
   digitalWrite(LedVERDE,LOW);
 }
-    
-    
